@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:key="setting_about_phone"
+    android:title="关于手机">
+
+    <Preference
+        android:summary="电话号码、信号等"
+        android:title="状态信息" />
+    <Preference android:title="法律信息" />
+
+    <Preference
+        android:summary="Samsung Galaxy S2 - 4.1.1 - API 16 - 480*800"
+        android:title="信号" />
+
+    <Preference
+        android:summary="4.1.1"
+        android:title="Android版本" />
+
+    <Preference
+        android:summary="未知"
+        android:title="基带版本" />
+</PreferenceScreen>

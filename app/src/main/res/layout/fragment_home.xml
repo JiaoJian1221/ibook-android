@@ -1,0 +1,51 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="me.jiaojian.ibook.ui.fragment.HomeFragment">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/colorGray" />
+
+
+        <me.jiaojian.ibook.ui.view.ViewPagerIndicator
+            android:id="@+id/view_Pager_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="18dp" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <me.jiaojian.ibook.ui.view.LoopViewPager
+            android:id="@+id/loop_view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/colorGray" />
+
+
+        <me.jiaojian.ibook.ui.view.ViewPagerIndicator
+            android:id="@+id/loop_view_Pager_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="18dp" />
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OK" />
+
+</LinearLayout>

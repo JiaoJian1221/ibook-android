@@ -28,5 +28,5 @@ public interface CatalogDao {
   LiveData<Catalog> findOne(Long id);
 
   @Query("select * from catalog")
-  LiveData<List<Channel>> findAll();
+  LiveData<List<Catalog>> findAll();
 }

@@ -1,3 +1,53 @@
 <resources>
     <string name="app_name">ibook</string>
+
+    <string-array name="connect_timeout_entries">
+        <item>不限</item>
+        <item>3秒</item>
+        <item>10秒</item>
+        <item>30秒</item>
+        <item>1分钟</item>
+        <item>5分钟</item>
+        <item>10分钟</item>
+    </string-array>
+
+    <string-array name="connect_timeout_entry_values">
+        <item>-1</item>
+        <item>3</item>
+        <item>10</item>
+        <item>30</item>
+        <item>60</item>
+        <item>300</item>
+        <item>600</item>
+    </string-array>
+
+    <array name="time_zone">
+        <item>GMT - 00:00</item>
+        <item>GMT - 01:00</item>
+        <item>GMT - 02:00</item>
+        <item>GMT - 03:00</item>
+        <item>GMT - 04:00</item>
+        <item>GMT - 05:00</item>
+        <item>GMT - 06:00</item>
+        <item>GMT - 07:00</item>
+        <item>GMT - 08:00</item>
+        <item>GMT - 09:00</item>
+        <item>GMT - 10:00</item>
+        <item>GMT - 11:00</item>
+        <item>GMT - 12:00</item>
+        <item>GMT - 13:00</item>
+        <item>GMT - 14:00</item>
+        <item>GMT - 15:00</item>
+        <item>GMT - 16:00</item>
+        <item>GMT - 17:00</item>
+        <item>GMT - 18:00</item>
+        <item>GMT - 19:00</item>
+        <item>GMT - 20:00</item>
+        <item>GMT - 21:00</item>
+        <item>GMT - 22:00</item>
+        <item>GMT - 23:00</item>
+    </array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

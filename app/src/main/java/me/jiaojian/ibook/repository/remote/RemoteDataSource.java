@@ -2,6 +2,7 @@ package me.jiaojian.ibook.repository.remote;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
+import android.support.annotation.NonNull;
 
 import java.util.List;
 
@@ -9,6 +10,8 @@ import java.util.List;
 import me.jiaojian.ibook.model.Channel;
 import me.jiaojian.ibook.repository.Resource;
 import me.jiaojian.ibook.repository.DataSource;
+import me.jiaojian.ibook.repository.ResourceSource;
+import me.jiaojian.ibook.repository.ResourceStatus;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -20,46 +23,48 @@ import retrofit2.Response;
 
 public class RemoteDataSource implements DataSource {
 
-  protected final RemoteApi api;
+  private final RemoteApi mRemoteApi;
+  private final ResourceSource mSource;
 
-  public RemoteDataSource(RemoteApi api) {
-    this.api = api;
+  public RemoteDataSource(RemoteApi api, ResourceSource source) {
+    mRemoteApi = api;
+    mSource = source;
   }
 
-  protected  <T> LiveData<Resource<T>> toLiveData(Call<T> call) {
-    final MutableLiveData<Resource<T>> data = new MutableLiveData<>();
-
-    data.postValue(Resource.<T>remote().loading());
+  private  <T> LiveData<Resource<T>> toLiveData(Call<T> call) {
+    final MutableLiveData<Resource<T>> result = new MutableLiveData<>();
+    final Resource<T> resource = mSource.<T>newResource().status(ResourceStatus.LOADING);
+    result.postValue(resource);
 
     call.enqueue(new Callback<T>() {
 
       @Override
-      public void onResponse(Call<T> call, Response<T> response) {
+      public void onResponse(@NonNull Call<T> call, @NonNull Response<T> response) {
         if(response.isSuccessful()) {
-          data.postValue(Resource.<T>remote().data(response.body()));
+          result.postValue(resource.data(response.body()));
         }
         else {
-          data.postValue(Resource.<T>remote().error(new RuntimeException("ERROR response, code:" + response.code() + ", message:" + response.message())));
+          result.postValue(resource.error(response.code(), response.message()));
         }
       }
 
       @Override
-      public void onFailure(Call<T> call, Throwable t) {
-        data.postValue(Resource.<T>remote().error(t));
+      public void onFailure(@NonNull Call<T> call, @NonNull Throwable t) {
+        result.postValue(resource.failure(t));
       }
 
     });
-    return data;
+    return result;
   }
 
   @Override
   public LiveData<Resource<List<Channel>>> getChannels() {
-    return toLiveData(api.getChannels());
+    return toLiveData(mRemoteApi.getChannels());
   }
 
   @Override
   public LiveData<Resource<Channel>> getChannel(Long id) {
-    return toLiveData(api.getChannel(id));
+    return toLiveData(mRemoteApi.getChannel(id));
   }
 
 }

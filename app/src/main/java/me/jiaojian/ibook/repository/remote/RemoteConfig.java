@@ -10,7 +10,7 @@ import android.content.SharedPreferences;
 public class RemoteConfig {
 
   private static final String USERNAME = "username";
-  private static final String PASSWORD = "PASSWORD";
+  private static final String PASSWORD = "password";
 
   private static final String HTTP_HOST = "http_host";
   private static final String HTTP_CONNECT_TIMEOUT = "http_connect_timeout";

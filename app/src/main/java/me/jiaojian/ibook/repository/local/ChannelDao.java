@@ -30,6 +30,6 @@ public interface ChannelDao {
   @Query("select * from channel")
   LiveData<List<Channel>> findAll();
 
-  @Query("SELECT * FROM user ORDER BY lastName ASC")
-  DataSource.Factory<Integer, Channel> usersByLastName();
+  @Query("SELECT * FROM channel ORDER BY name ASC")
+  DataSource.Factory<Integer, Channel> findChannelsOrderByName();
 }

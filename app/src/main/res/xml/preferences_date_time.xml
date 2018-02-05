@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:key="setting_date_time"
+    android:title="日期和时间">
+    <CheckBoxPreference
+        android:key="auto_set_date_time"
+        android:summary="使用网络上的时间"
+        android:title="自动确定日期和时间" />
+    <CheckBoxPreference
+        android:key="auto_set_timezone"
+        android:summary="使用网络上的时区"
+        android:title="自动确定时区" />
+    <Preference
+        android:dependency="auto_set_date_time"
+        android:summary="2016-1-21"
+        android:title="设置日期" />
+    <Preference
+        android:dependency="auto_set_date_time"
+        android:summary="上午 10:43"
+        android:title="设置时间" />
+    <ListPreference
+        android:dependency="auto_set_timezone"
+        android:entries="@array/time_zone"
+        android:entryValues="@array/time_zone"
+        android:key="setting_timezone"
+        android:title="现在时区" />
+</PreferenceScreen>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:key="setting_developer_options"
+    android:title="开发者选项">
+    <Preference
+        android:summary="桌面备份密码"
+        android:title="桌面完成备份当前未设置密码保护" />
+
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="charge_lock_screen"
+        android:summary="充电时屏幕不会休眠"
+        android:title="不锁定屏幕" />
+
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="never_sleep"
+        android:summary="Screen will never sleep"
+        android:title="Always stay awake" />
+
+</PreferenceScreen>

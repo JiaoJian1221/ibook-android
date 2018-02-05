@@ -12,6 +12,8 @@ import me.jiaojian.ibook.model.Catalog;
 import me.jiaojian.ibook.model.Channel;
 import me.jiaojian.ibook.repository.Resource;
 import me.jiaojian.ibook.repository.DataSource;
+import me.jiaojian.ibook.repository.ResourceSource;
+import me.jiaojian.ibook.repository.ResourceStatus;
 
 /**
  * Created by jiaojian on 2018/1/26.
@@ -29,8 +31,9 @@ public class LocalDataSource implements DataSource {
 
   private <T> LiveData<Resource<T>> toLiveData(final LiveData<T> liveData) {
     final MediatorLiveData<Resource<T>> merger = new MediatorLiveData<>();
-    merger.postValue(Resource.<T>local().loading());
-    merger.addSource(liveData, data -> merger.postValue(Resource.<T>local().data(data)));
+    final Resource<T> resource = ResourceSource.LOCAL.<T>newResource().status(ResourceStatus.LOADING);
+    merger.postValue(resource);
+    merger.addSource(liveData, data -> merger.postValue(resource.data(data)));
     return merger;
   }
 

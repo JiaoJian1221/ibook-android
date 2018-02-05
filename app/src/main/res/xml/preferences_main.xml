@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="服务器设置" android:key="http">
+        <EditTextPreference
+            android:title="服务器地址"
+            android:dialogTitle="请输入服务器地址"
+            android:defaultValue="http://10.0.2.2:8080"
+            android:summary="http://10.0.2.2:8080"
+            android:key="http_host"/>
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="http_timeout_default"
+            android:summary="使用自定义设置"
+            android:title="连接超时" />
+
+        <ListPreference
+            android:dependency="http_timeout_default"
+            android:entries="@array/connect_timeout_entries"
+            android:entryValues="@array/connect_timeout_entry_values"
+            android:key="http_connect_timeout"
+            android:summary="当前网络连接超时为%s"
+            android:title="网络连接超时" />
+
+        <ListPreference
+            android:dependency="http_timeout_default"
+            android:entries="@array/connect_timeout_entries"
+            android:entryValues="@array/connect_timeout_entry_values"
+            android:key="http_read_timeout"
+            android:summary="当前网络读取超时为%s"
+            android:title="网络读取超时" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="网络">
+        <!--选择控件-->
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="setting_wifi"
+            android:title="Wi-Fi" />
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="setting_bluetouh"
+            android:title="蓝牙" />
+
+        <!--PreferenceScreen代表一页选项,当点击进去的时候会跳转到另一个页面,点击返回按钮会回到上一个页面-->
+        <PreferenceScreen
+            android:key="setting_traffic_usage"
+            android:title="流量使用情况" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="设备">
+        <PreferenceScreen
+            android:key="setting_sound"
+            android:title="声音" />
+
+        <PreferenceScreen
+            android:key="setting_display"
+            android:title="显示" />
+
+        <PreferenceScreen
+            android:key="setting_storage"
+            android:title="存储" />
+
+        <PreferenceScreen
+            android:key="setting_battery"
+            android:title="电池" />
+
+        <PreferenceScreen
+            android:key="setting_application"
+            android:title="应用" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="系统">
+        <PreferenceScreen
+            android:fragment="me.jiaojian.ibook.ui.fragment.setting.DatetimePreference"
+            android:key="setting_date_time"
+            android:title="日期和时间"/>
+
+        <PreferenceScreen
+            android:key="setting_auxiliary_function"
+            android:title="辅助功能" />
+
+        <PreferenceScreen
+            android:fragment="me.jiaojian.ibook.ui.fragment.setting.DeveloperPreference"
+            android:key="setting_developer_options"
+            android:title="开发者选项"/>
+
+        <PreferenceScreen
+            android:fragment="me.jiaojian.ibook.ui.fragment.setting.AboutPhonePreference"
+            android:key="setting_about_phone"
+            android:title="关于手机" />
+    </PreferenceCategory>
+
+    <Preference android:title="关于">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="http://www.riz-soft.com" />
+    </Preference>
+</PreferenceScreen>
